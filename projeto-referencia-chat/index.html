@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /> <!-- Define o charset do documento -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Responsividade -->
+
+  <link rel="stylesheet" href="style.css" /> <!-- Importa o CSS externo -->
+  <title>Joel & Karen — Casamento</title>
+</head>
+
+<body>
+  <!-- Skip link (acessibilidade) -->
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Topbar fixa -->
+  <header class="topbar" id="topo">
+    <div class="topbar__inner">
+      <div class="brand">
+        <h1 class="brand__title">Joel & Karen</h1> <!-- Título principal -->
+        <p class="brand__subtitle">Nosso casamento 💍</p> <!-- Subtítulo -->
+      </div>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a class="nav__link" href="#detalhes">Detalhes</a>
+        <a class="nav__link" href="#rsvp">Confirmar</a>
+        <a class="nav__link" href="#presentes">Presentes</a>
+        <a class="nav__link" href="#faq">FAQ</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn btn--ghost" id="btnTheme" type="button" aria-label="Alternar tema">
+          🌙
+        </button>
+
+        <button class="btn btn--primary" id="btnAbrirRSVP" type="button">
+          Confirmar presença
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- HERO -->
+    <section class="hero" aria-label="Seção de destaque">
+      <div class="hero__bg" aria-hidden="true"></div> <!-- Fundo decorativo -->
+
+      <div class="container hero__content">
+        <div class="glass hero__card">
+          <h2 class="hero__headline">Estamos muito felizes em te receber ❤️</h2>
+          <p class="hero__text">
+            Aqui você encontra <strong>data, local</strong>, confirma sua presença e escolhe um presente.
+          </p>
+
+          <div class="hero__grid">
+            <div class="info">
+              <p class="info__label">Data</p>
+              <p class="info__value" id="weddingDateText">—</p>
+            </div>
+
+            <div class="info">
+              <p class="info__label">Local</p>
+              <p class="info__value">Igreja / Espaço (defina o nome)</p>
+            </div>
+
+            <div class="info">
+              <p class="info__label">Contagem regressiva</p>
+              <div class="countdown" id="countdown" aria-live="polite">
+                <div class="countdown__item">
+                  <span class="countdown__num" id="cdDays">0</span>
+                  <span class="countdown__label">dias</span>
+                </div>
+                <div class="countdown__item">
+                  <span class="countdown__num" id="cdHours">0</span>
+                  <span class="countdown__label">horas</span>
+                </div>
+                <div class="countdown__item">
+                  <span class="countdown__num" id="cdMin">0</span>
+                  <span class="countdown__label">min</span>
+                </div>
+                <div class="countdown__item">
+                  <span class="countdown__num" id="cdSec">0</span>
+                  <span class="countdown__label">seg</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="info">
+              <p class="info__label">Instagram</p>
+              <div class="ig">
+                <a class="chip" href="#" target="_blank" rel="noopener noreferrer">Joel</a>
+                <a class="chip" href="#" target="_blank" rel="noopener noreferrer">Karen</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#rsvp">Confirmar agora</a>
+            <a class="btn btn--secondary" href="#presentes">Ver presentes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETALHES -->
+    <section class="section" id="detalhes">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Detalhes</h2>
+          <p class="section__subtitle">Tudo o que você precisa saber, sem enrolação.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3 class="card__title">Horários</h3>
+            <p class="card__text"><strong>Cerimônia:</strong> 19:00</p>
+            <p class="card__text"><strong>Recepção:</strong> 20:30</p>
+          </article>
+
+          <article class="card">
+            <h3 class="card__title">Endereço</h3>
+            <p class="card__text">Rua Exemplo, 123 — Centro</p>
+            <a class="link" href="#" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a>
+          </article>
+
+          <article class="card">
+            <h3 class="card__title">Traje</h3>
+            <p class="card__text">Esporte fino / social (sugestão).</p>
+            <p class="card__hint">Dica: tons terrosos combinam com a paleta 🙂</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section" id="rsvp">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Confirmar presença</h2>
+          <p class="section__subtitle">Escolha seu nome e confirme. Seu status fica salvo no navegador.</p>
+        </div>
+
+        <div class="rsvp">
+          <div class="rsvp__left">
+            <label class="label" for="buscaConvidado">Buscar convidado</label>
+            <input
+              class="input"
+              id="buscaConvidado"
+              type="text"
+              placeholder="Digite seu nome..."
+              autocomplete="off"
+            />
+
+            <label class="label" for="convidado">Seu nome</label>
+            <select class="select" id="convidado" name="convidado">
+              <option value="">Selecione seu nome</option>
+              <!-- JS vai injetar os convidados -->
+            </select>
+
+            <div class="rsvp__buttons" role="group" aria-label="Escolha seu status">
+              <button class="btn btn--primary" id="btnSim" type="button">✅ Vou</button>
+              <button class="btn btn--secondary" id="btnTalvez" type="button">🤔 Talvez</button>
+              <button class="btn btn--ghost" id="btnNao" type="button">❌ Não vou</button>
+            </div>
+
+            <p class="rsvp__saved" id="rsvpSaved" aria-live="polite"></p>
+          </div>
+
+          <div class="rsvp__right">
+            <div class="glass rsvp__panel">
+              <h3 class="panel__title">Resumo</h3>
+              <p class="panel__line"><span>Convidado:</span> <strong id="resNome">—</strong></p>
+              <p class="panel__line"><span>Status:</span> <strong id="resStatus">—</strong></p>
+              <p class="panel__line"><span>Última atualização:</span> <strong id="resData">—</strong></p>
+
+              <div class="panel__actions">
+                <button class="btn btn--secondary" id="btnEditar" type="button">Editar</button>
+                <button class="btn btn--ghost" id="btnLimpar" type="button">Limpar</button>
+              </div>
+
+              <p class="panel__hint">
+                Se você estiver no celular, esse painel ajuda a evitar erro de clique.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRESENTES -->
+    <section class="section" id="presentes">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Lista de presentes</h2>
+          <p class="section__subtitle">Escolha um item e marque como “vou comprar” (salvo no navegador).</p>
+        </div>
+
+        <div class="gifts">
+          <div class="gifts__tools">
+            <input class="input" id="giftSearch" type="text" placeholder="Buscar presente..." />
+            <select class="select" id="giftFilter">
+              <option value="all">Todos</option>
+              <option value="casa">Casa</option>
+              <option value="cozinha">Cozinha</option>
+              <option value="quarto">Quarto</option>
+              <option value="outros">Outros</option>
+            </select>
+
+            <button class="btn btn--ghost" id="btnResetGifts" type="button">Reset</button>
+          </div>
+
+          <div class="grid" id="giftGrid" aria-live="polite">
+            <!-- JS injeta os cards -->
+          </div>
+
+          <div class="pix">
+            <div class="pix__left">
+              <h3 class="pix__title">Opção: PIX</h3>
+              <p class="pix__text">Se preferir, você pode presentear via PIX (exemplo).</p>
+            </div>
+
+            <div class="pix__right">
+              <code class="pix__code" id="pixKey">SUA-CHAVE-PIX-AQUI</code>
+              <button class="btn btn--secondary" id="btnCopyPix" type="button">Copiar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">FAQ</h2>
+          <p class="section__subtitle">Perguntas comuns, respostas diretas.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq__item">
+            <summary class="faq__q">Posso levar acompanhante?</summary>
+            <p class="faq__a">Se seu convite tiver acompanhante, vai aparecer no seu nome (você pode adaptar isso no JSON).</p>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__q">Até quando posso confirmar?</summary>
+            <p class="faq__a">Ideal: até 7 dias antes para fechar lista com o local.</p>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__q">E se eu confirmar errado?</summary>
+            <p class="faq__a">Use “Editar” ou “Limpar” na seção Confirmar presença.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>Feito com carinho — Joel & Karen</p>
+        <a class="link" href="#topo">Voltar ao topo</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- MODAL (genérico) -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__overlay" data-close="true"></div>
+
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h3 class="modal__title" id="modalTitle">Confirmação</h3>
+      <p class="modal__text" id="modalText">—</p>
+
+      <div class="modal__actions">
+        <button class="btn btn--secondary" id="modalOk" type="button">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script> <!-- Importa o JS -->
+</body>
+</html>

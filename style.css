@@ -1,0 +1,558 @@
+.dm-serif-display-regular {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "FonteParaNossosNomes";
+    src: url(fonte/BonVivantSerifBold.woff2) format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --cor-1: #C4967B;
+    --cor-2: #B97647;
+    --cor-3: #9B431E;
+    --cor-4: #B4220A;
+    --cor-5: #371009;
+    --area-leitura: #ecede3;
+    --branco-transparente: rgba(255, 255, 255, 0.433);
+    --preto-transparente: rgba(0, 0, 0, 0.558);
+    font-size: 16px;
+}
+
+* {
+    margin: 0px;
+    border: 0px;
+    box-sizing: border-box;
+    font-family: "DM Serif Display", serif;
+}
+
+body {
+    width: calc(100svw - (100svw - 100%));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100svh;
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    width: 100%;
+
+    background-color: #3710096b;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.header-topo {
+    display: grid;
+    width: 80%;
+    grid-template-columns: 2fr 1fr;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 20px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.nomes-e-data {
+    color: var(--area-leitura);
+    display: grid;
+    justify-content: center;
+    row-gap: 6px;
+}
+
+.nossos-nomes {
+    display: flex;
+    justify-content: center;
+    font-family: "FonteParaNossosNomes", serif;
+    font-size: 3em;
+    color: var(--cor-2);
+    text-shadow: 0px 6px 10px rgba(0, 0, 0, 0.244);
+    /* word-break: break-word; */
+}
+
+.info-data {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-data time {
+    font-size: 1.5rem;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.nav h2 {
+    text-wrap: nowrap;
+    color: var(--cor-1);
+    text-shadow: 0px 3px 5px #cab5a920;
+}
+
+.nossos-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0px;
+    gap: 40px;
+}
+
+.header-base {
+    background-color: #371009a1;
+    width: 100%;
+    padding: 10px 10px;
+    text-align: center;
+
+    box-shadow: 0px 12px 12px var(--preto-transparente);
+    border-top: 2px dashed #b9764751;
+    border-bottom: 2px dashed #b9764751;
+}
+
+.header-base>p {
+    color: var(--area-leitura);
+}
+
+/* Links */
+a {
+    color: var(--cor-2);
+    display: inline-block;
+    text-decoration: none;
+}
+
+.nav nav ul a {
+    color: var(--area-leitura);
+}
+
+a:hover {
+    transform: scale(1.05);
+}
+
+a:visited {
+    color: var(--cor-2);
+}
+
+main {
+    width: 100%;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.wrapper-contador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    aspect-ratio: 10 / 1;
+    margin: 2rem 0px 4rem 0px;
+}
+
+/* Contador */
+#contador {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: clamp(35%, 55%, 75%);
+    height: clamp(1rem, 5rem, 7rem);
+    text-wrap: nowrap;
+    font-size: clamp(0.5rem, 3vw, 3.5rem);
+    border-radius: 25px;
+    padding: 1rem;
+
+    color: var(--area-leitura);
+    border: 1px dashed var(--branco-transparente);
+    backdrop-filter: blur(8px);
+    text-shadow: 0px 2px 3px var(--preto-transparente);
+    box-shadow: inset 0px 10px 10px -5px rgba(239, 216, 216, 0.459),
+        inset 0px -10px 10px -5px rgba(31, 6, 6, 0.415);
+}
+
+/* Carrocel */
+.wrapper-carrocel {
+    width: 80%;
+    margin-bottom: 3rem;
+    overflow: hidden;
+}
+
+.carrocel {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 0 auto;
+    padding: 0 0 2.5rem 0;
+    gap: 0;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0;
+    anchor-name: --carrocel;
+    scroll-marker-group: after;
+}
+
+.carrocel::scroll-marker-group {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.carrocel .card::scroll-marker {
+    position: relative;
+    top: -30px;
+    content: ' ';
+    height: .7rem;
+    width: .7rem;
+    background-color: var(--area-leitura);
+    border-radius: 50%;
+}
+
+.carrocel .card::scroll-marker:target-current {
+    background-color: var(--cor-4);
+}
+
+.carrocel::-webkit-scrollbar {
+    display: none;
+}
+
+.carrocel::scroll-button(right),
+.carrocel::scroll-button(left) {
+    content: "→";
+    width: 3rem;
+    height: 3rem;
+    position: fixed;
+    position: --carrocel;
+    border: none;
+    background-color: var(--cor-5);
+    color: var(--area-leitura);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    padding: .5rem;
+    cursor: pointer;
+    scroll-behavior: smooth;
+    position-anchor: --carrocel;
+    position-area: right center;
+    translate: -60%;
+}
+
+.carrocel::scroll-button(left) {
+    content: "←";
+    position-area: left;
+    translate: 60%;
+}
+
+.carrocel::scroll-button(right):disabled,
+.carrocel::scroll-button(left):disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.carrocel .card {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    aspect-ratio: 3 / 2;
+    max-height: 600px;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.carrocel .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* chá */
+.outras-informacoes {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    background-color: #371009c7;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.outras-informacoes p {
+    color: var(--area-leitura);
+    padding-top: 10px;
+}
+
+/* Imagens fundo (BG) */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-color: black;
+    overflow: hidden;
+}
+
+.bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    will-change: opacity;
+    z-index: 1;
+}
+
+.bg-img.ativa {
+    opacity: 1;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, .4),
+            transparent 20%,
+            transparent 80%,
+            rgba(0, 0, 0, .4));
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* Perguntas e respostas / faq */
+.faq {
+    display: flex;
+    flex-direction: column;
+}
+
+.faq h2 {
+    align-self: center;
+    background-color: var(--cor-1);
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 15px 0px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.337);
+    transition: transform 0.3s ease;
+}
+
+.faq h2:hover {
+    transform: scale(1.01);
+}
+
+details {
+    display: block;
+}
+
+details summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+details p {
+    display: inline;
+    color: var(--cor-5);
+}
+
+.faq {
+    width: 60%;
+    max-width: 900px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px dashed var(--branco-transparente);
+}
+
+.faq details {
+    margin-bottom: 12px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background-color: #371009ac;
+}
+
+.faq summary {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: clamp(.8rem, calc(.5rem + 1vw), 1.5rem);
+    list-style: none;
+    display: block;
+    align-items: center;
+    color: var(--area-leitura);
+    letter-spacing: 2px;
+    word-spacing: 3px;
+    word-break: break-word;
+}
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq summary::before {
+    content: "➤";
+    margin-right: 8px;
+    font-size: 0.5em;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    color: var(--cor-1);
+}
+
+.faq details {
+    transition: transform 0.2s ease;
+}
+
+.faq details:hover {
+    transform: scale(1.02);
+    background-color: #220804c3;
+}
+
+.faq details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.faq details p {
+    margin-top: 8px;
+    color: var(--cor-1);
+    line-height: 1.5;
+
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.faq details[open] p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Endereço */
+.local {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 50px;
+
+    background-color: rgba(255, 255, 255, 0.722);
+    box-shadow: 0px 3px 5px var(--preto-transparente);
+}
+
+.local>p {
+    color: var(--cor-5);
+    margin-right: 5px;
+}
+
+/* Rodapé */
+footer {
+    width: calc(100svw - (100svw - 100%));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    border-top: 2px dashed #b9764751;
+    padding: 10px;
+    background-color: #371009d2;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    white-space: normal;
+}
+
+footer p,
+footer address {
+    color: var(--area-leitura);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+footer>p {
+    margin-right: 5px;
+}
+
+footer .link-contato {
+    color: var(--cor-2);
+}
+
+footer .link-contato:hover {
+    transform: translateX(5px) scale(1.05);
+}
+
+@media (max-width: 710px) {
+
+    .header-topo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nomes-e-data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .nossos-nomes {
+        font-size: 5rem;
+        line-height: 0.8;
+        padding: 15px;
+    }
+
+    .info-data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nossos-links {
+        display: flex;
+        justify-content: center;
+    }
+
+    #contador {
+        width: clamp(60%, 80%, 100%);
+        text-wrap: wrap;
+        font-size: 1rem;
+    }
+
+    .faq {
+        width: 100%;
+    }
+}
